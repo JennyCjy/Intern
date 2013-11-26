@@ -27,11 +27,11 @@ public class Constants {
 			p.load(in);
 			readPath=p.getProperty("file.readpath");
 			writePath=p.getProperty("file.writepath");
-			eventType_one=p.getProperty("SOJEvent");
-			eventType_two=p.getProperty("SessionEndEvent");
-			eventType_three=p.getProperty("SessionEndEvent");
-			eventType_four=p.getProperty("SessionEndEvent");
-			snev=p.getProperty("snev");
+			eventType_one=p.getProperty("event.type.one");
+			eventType_two=p.getProperty("event.type.two");
+			eventType_three=p.getProperty("event.type.three");
+			eventType_four=p.getProperty("event.type.four");
+			snev=p.getProperty("event.snev");
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -1,4 +1,4 @@
-package com.ebay.grab.cjy;
+package com.eby.crawl.cjy;
 
 import java.io.BufferedReader;
 import java.io.File;

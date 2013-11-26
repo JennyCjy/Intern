@@ -51,6 +51,7 @@ public class SaxParseService extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {  
 	     if ("LastEvent".equals(qName)) {
 			event=new Event();
+			System.out.println("------LastEvent Starts-------");
 		 }
 	     if ("entry".equals(qName)) {
 			key=attributes.getValue("key");
@@ -60,18 +61,24 @@ public class SaxParseService extends DefaultHandler {
 	  
 	@Override  
 	public void endElement(String uri, String localName, String qName) throws SAXException {  
-		  if ("LastEvent".equals(qName)) {
+		 if ("LastEvent".equals(qName)) {
 			if(event.getType().equals(Constants.eventType_one)&&event.getApp()!=null){
 				eventListOne.add(event);
+				System.out.println("---->Add to List one");
 			}
 			if (event.getType().equals(Constants.eventType_two)&&event.getApp()!=null) {
 				eventListTwo.add(event);
+				System.out.println("---->Add to List two");
 			}
-			if (event.getType().equals(Constants.eventType_three)&&event.getApp()!=null&&event.getSnev().endsWith(Constants.snev)) {
-				eventListThree.add(event);
+			if (event.getType().equals(Constants.eventType_three)&&event.getApp()!=null&&event.getSnev()!=null) {
+				if (event.getSnev().equals("1")) {
+					eventListThree.add(event);
+					System.out.println("---->Add to List three");
+				}
 			}
 			if (event.getType().equals(Constants.eventType_four)&&event.getApp()!=null&&event.getRv()!=null) {
 				eventListFour.add(event);
+				System.out.println("---->Add to List four");
 			}
 			event=null;
 		}
@@ -86,15 +93,19 @@ public class SaxParseService extends DefaultHandler {
 			 if ("entry".equals(preTag)) {
 				if (key.equals(Constants.KEYTYPE)) {
 					event.setType(content);
+					System.out.println(key+":"+content);
 				}
 				if(key.equals(Constants.KEYAPP)){
 					event.setApp(content);
+					System.out.println(key+":"+content);
 				}
 				if (key.equals(Constants.KEYSNEV)) {
 					event.setSnev(content);
+					System.out.println(key+":"+content);
 				}
 				if (key.equals(Constants.KEYRV)) {
 					event.setRv(content);
+					System.out.println(key+":"+content);
 				}
 			}
 		}

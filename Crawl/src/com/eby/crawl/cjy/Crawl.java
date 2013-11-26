@@ -1,4 +1,5 @@
-package com.ebay.grab.cjy;
+package com.eby.crawl.cjy;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -140,6 +141,7 @@ public class Crawl extends Thread{
 				output = new BufferedWriter(new FileWriter(file,true));
 				output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 				output.write("\n");
+				output.write("<Root>");
 				output.flush();
 			} catch (IOException e1) {
 				e1.printStackTrace();
