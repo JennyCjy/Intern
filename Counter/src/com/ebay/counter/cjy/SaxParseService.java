@@ -1,22 +1,19 @@
 package com.ebay.counter.cjy;
 
-import java.awt.List;
-import java.io.InputStream;
+
 import java.util.ArrayList;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class SaxParseService extends DefaultHandler {
-	  private ArrayList<Event> eventListOne;
-	  private ArrayList<Event> eventListTwo;
-	  private ArrayList<Event> eventListThree;
-	  private ArrayList<Event> eventListFour;
+	  private ArrayList<Event> eventListOne=null;
+	  private ArrayList<Event> eventListTwo=null;
+	  private ArrayList<Event> eventListThree=null;
+	  private ArrayList<Event> eventListFour=null;
+	  private Event event =null;
 	  private String preTag = null;
+	  private String  key=null;
 	  
 	public ArrayList<Event> getEventListOne() {
 		return eventListOne;
@@ -42,31 +39,65 @@ public class SaxParseService extends DefaultHandler {
 	public void setEventListFour(ArrayList<Event> eventListFour) {
 		this.eventListFour = eventListFour;
 	}
-	public SaxParseService(){
-			eventListOne=new ArrayList<Event>();
-	    	eventListTwo = new ArrayList<Event>();
-	    	eventListThree=new ArrayList<Event>();
-	    	eventListFour = new ArrayList<Event>();
-	  }
 	@Override  
 	public void startDocument() throws SAXException {  
-		
+		eventListOne=new ArrayList<Event>();
+    	eventListTwo = new ArrayList<Event>();
+    	eventListThree=new ArrayList<Event>();
+    	eventListFour = new ArrayList<Event>();
 	}  
 	  
 	@Override  
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {  
-	     
+	     if ("LastEvent".equals(qName)) {
+			event=new Event();
+		 }
+	     if ("entry".equals(qName)) {
+			key=attributes.getValue("key");
+		}
+	     preTag = qName;
 	}  
 	  
 	@Override  
 	public void endElement(String uri, String localName, String qName) throws SAXException {  
-		
+		  if ("LastEvent".equals(qName)) {
+			if(event.getType().equals(Constants.eventType_one)&&event.getApp()!=null){
+				eventListOne.add(event);
+			}
+			if (event.getType().equals(Constants.eventType_two)&&event.getApp()!=null) {
+				eventListTwo.add(event);
+			}
+			if (event.getType().equals(Constants.eventType_three)&&event.getApp()!=null&&event.getSnev().endsWith(Constants.snev)) {
+				eventListThree.add(event);
+			}
+			if (event.getType().equals(Constants.eventType_four)&&event.getApp()!=null&&event.getRv()!=null) {
+				eventListFour.add(event);
+			}
+			event=null;
+		}
 	      preTag=null;
+	      key=null;
 	}  
 	      
 	@Override  
 	public void characters(char[] ch, int start, int length) throws SAXException {  
-	       
+	       if (preTag!=null) {
+			 String content = new String(ch,start,length);
+			 if ("entry".equals(preTag)) {
+				if (key.equals(Constants.KEYTYPE)) {
+					event.setType(content);
+				}
+				if(key.equals(Constants.KEYAPP)){
+					event.setApp(content);
+				}
+				if (key.equals(Constants.KEYSNEV)) {
+					event.setSnev(content);
+				}
+				if (key.equals(Constants.KEYRV)) {
+					event.setRv(content);
+				}
+			}
+		}
 	}  
 	 
 }

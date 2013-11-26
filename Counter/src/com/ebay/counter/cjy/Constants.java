@@ -15,6 +15,10 @@ public class Constants {
 	public static String eventType_three;
 	public static String eventType_four;
 	public static String snev;
+	public final static String KEYTYPE="js_ev_type";
+	public final static String KEYAPP="app";
+	public final static String KEYSNEV="snev";
+	public final static String KEYRV="rv";
 	public static void getProperties() {
 		InputStream in;
 		Properties p = new Properties();

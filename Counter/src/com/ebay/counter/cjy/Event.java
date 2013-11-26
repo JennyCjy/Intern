@@ -4,19 +4,12 @@ public class Event {
 	private String Type;
 	private String App;
 	private String snev;
-    private boolean rv;
-    public Event(String type,String app){
-    	this.Type=type;
-    	this.App=app;
-    }
-    public Event(String type,String app,String snev){
-    	this(type, app);
-    	this.snev=snev;
-    }
-    
-    public Event(String type,String app,boolean rv){
-    	this(type, app);
-    	this.rv=rv;
+    private String rv;
+    public Event(){
+    	Type=null;
+    	App=null;
+    	snev=null;
+    	rv=null;
     }
     
     
@@ -38,10 +31,10 @@ public class Event {
 	public void setSnev(String snev) {
 		this.snev = snev;
 	}
-	public boolean isRv() {
+	public String getRv() {
 		return rv;
 	}
-	public void setRv(boolean rv) {
+	public void setRv(String rv) {
 		this.rv = rv;
 	}
 }

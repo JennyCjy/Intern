@@ -138,8 +138,9 @@ public class Crawl extends Thread{
 			BufferedWriter output = null;
 			try {
 				output = new BufferedWriter(new FileWriter(file,true));
-//				output.write("<?xml version="1.0" encoding='UTF-8'?>");
-//				output.flush();
+				output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+				output.write("\n");
+				output.flush();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
