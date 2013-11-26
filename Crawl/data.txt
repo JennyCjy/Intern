@@ -1,0 +1,12 @@
+http://chd1b01c-d830.stratus.phx.ebay.com:9999
+http://chd1b02c-bf40.stratus.phx.ebay.com:9999
+http://chd1b02c-f91c.stratus.phx.ebay.com:9999
+http://chd1b01c-5b7e.stratus.phx.ebay.com:9999
+http://chd1b01c-d692.stratus.phx.ebay.com:9999
+http://chd1b01c-f1fb.stratus.phx.ebay.com:9999
+http://slc4b03c-c884.stratus.slc.ebay.com:9999
+http://slc4b03c-c5ff.stratus.slc.ebay.com:9999
+http://slc4b03c-2dbd.stratus.slc.ebay.com:9999
+http://slc4b03c-4b65.stratus.slc.ebay.com:9999
+http://slc4b03c-c8e1.stratus.slc.ebay.com:9999
+http://slc4b02c-c683.stratus.slc.ebay.com:9999
